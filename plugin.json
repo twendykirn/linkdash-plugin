@@ -1,0 +1,109 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "linkdash",
+  "version": "1.0.0",
+  "description": "Create and manage tracked short links from your AI agent: shorten URLs, share files and text, split traffic between pages, route visitors by country or device, and read click analytics.",
+  "author": {
+    "name": "Linkdash",
+    "email": "support@linkdash.dev",
+    "url": "https://linkdash.dev"
+  },
+  "homepage": "https://linkdash.dev",
+  "repository": "https://github.com/twendykirn/linkdash-plugin",
+  "license": "MIT",
+  "keywords": [
+    "short links",
+    "url shortener",
+    "link analytics",
+    "a/b testing",
+    "qr codes"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Linkdash",
+        "shortDescription": "Short links your agents drive",
+        "longDescription": "Linkdash is a URL shortener built for people and AI agents. Connect your Linkdash account and ask ChatGPT to:\n\n- Shorten a URL into a tracked link on lida.sh or your own domain\n- Share a file or a text snippet as a link, with an optional password, expiry, or opening limit\n- Split one link between several pages for an A/B test, with sticky assignment\n- Route visitors by country, device, operating system, language, or referrer, for example iPhones to the App Store and Android phones to Google Play\n- Read visits, countries, and referrers for any link and variant\n- Update, pause, or delete links, and manage custom domains\n\nYou sign in with your Linkdash account and approve access on a consent screen. Disconnect ChatGPT at any time under Dashboard → API keys. The Free plan includes 5,000 events a month.",
+        "developerName": "Linkdash",
+        "category": "Productivity",
+        "capabilities": [
+          "Create short links",
+          "Share files and text as links",
+          "A/B test and target links",
+          "Read click analytics",
+          "Manage custom domains"
+        ],
+        "websiteURL": "https://linkdash.dev",
+        "supportURL": "https://linkdash.dev/support",
+        "privacyPolicyURL": "https://linkdash.dev/legal/privacy-policy",
+        "termsOfServiceURL": "https://linkdash.dev/legal/terms-of-service",
+        "defaultPrompt": [
+          "Shorten https://example.com/pricing into a short link",
+          "How many visits did my links get this week?",
+          "Split a link 50/50 between two landing pages"
+        ],
+        "brandColor": "#2B7FFF",
+        "brandColorDark": "#8CB4FF",
+        "composerIcon": "./assets/icon.png",
+        "composerIconDark": "./assets/icon-dark.png",
+        "logo": "./assets/logo.png",
+        "logoDark": "./assets/logo-dark.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Shorten a URL into a new tracked short link.",
+              "prompt": "Shorten https://example.com/blog/hello-world into a short link.",
+              "tools_triggered": "links_create",
+              "expected_behavior": "Creates one link and replies with its lida.sh short URL, which redirects to https://example.com/blog/hello-world."
+            },
+            {
+              "description": "List existing links filtered by tag.",
+              "prompt": "Show my short links tagged launch.",
+              "tools_triggered": "links_list",
+              "expected_behavior": "Lists the account's links that carry the launch tag, with each short URL and destination. The test account has two such links: lida.sh/review-launch and lida.sh/review-pricing."
+            },
+            {
+              "description": "Read visit analytics for one link.",
+              "prompt": "How many visits did lida.sh/review-launch get in the last 30 days, and which countries did they come from?",
+              "tools_triggered": "links_stats",
+              "expected_behavior": "Reports the visit total for lida.sh/review-launch over the last 30 days and the countries the visits came from."
+            },
+            {
+              "description": "Create an A/B test that splits traffic evenly between two pages.",
+              "prompt": "Create a short link that splits visitors 50/50 between https://example.com/pricing and https://example.com/pricing-v2.",
+              "tools_triggered": "links_create",
+              "expected_behavior": "Creates one link with two variants of equal weight, one per page, and replies with the short URL."
+            },
+            {
+              "description": "Pause a link so it stops redirecting.",
+              "prompt": "Pause my link lida.sh/review-launch.",
+              "tools_triggered": "links_update",
+              "expected_behavior": "Sets the link's status to paused and confirms it. Visitors to lida.sh/review-launch no longer reach the destination until it is resumed."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Unrelated request; no Linkdash tool should be used.",
+              "prompt": "What's the weather in Paris today?"
+            },
+            {
+              "description": "Buying a domain is not supported; Linkdash only connects domains the user already owns.",
+              "prompt": "Register the domain example-shop.com for me."
+            },
+            {
+              "description": "Linkdash does not send email or messages.",
+              "prompt": "Email this short link to my team."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "This plugin does not sell products or subscriptions."
+      },
+      "publication": {
+        "release_notes": "Initial release: create, update, and delete short links, share files and text, A/B test and target links by country or device, read click analytics, and manage custom domains."
+      }
+    }
+  }
+}
