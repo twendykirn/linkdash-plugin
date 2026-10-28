@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "linkdash",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Create and manage tracked short links from your AI agent: shorten URLs, share files and text, split traffic between pages, route visitors by country or device, and read click analytics.",
   "author": {
     "name": "Linkdash",
@@ -23,7 +23,7 @@
       "interface": {
         "displayName": "Linkdash",
         "shortDescription": "Short links your agents drive",
-        "longDescription": "Linkdash is a URL shortener built for people and AI agents. Connect your Linkdash account and ask ChatGPT to:\n\n- Shorten a URL into a tracked link on lida.sh or your own domain\n- Share a file or a text snippet as a link, with an optional password, expiry, or opening limit\n- Split one link between several pages for an A/B test, with sticky assignment\n- Route visitors by country, device, operating system, language, or referrer, for example iPhones to the App Store and Android phones to Google Play\n- Read visits, countries, and referrers for any link and variant\n- Update, pause, or delete links, and manage custom domains\n\nYou sign in with your Linkdash account and approve access on a consent screen. Disconnect ChatGPT at any time under Dashboard → API keys. The Free plan includes 5,000 events a month.",
+        "longDescription": "Linkdash is a URL shortener built for people and AI agents. Connect your Linkdash account and ask ChatGPT to:\n\n- Shorten a URL into a tracked link on lida.sh or your own domain\n- Share a file or a text snippet as a link, with an optional password, expiry, or opening limit\n- Split one link between several pages for an A/B test, with sticky assignment\n- Route visitors by country, device, operating system, language, or referrer, for example iPhones to the App Store and Android phones to Google Play\n- Read visits, countries, and referrers for any link and variant\n- Update, pause, or delete links, and manage custom domains\n\nYou sign in with your Linkdash account and approve access on a consent screen. Disconnect ChatGPT at any time under Dashboard → API keys.",
         "developerName": "Linkdash",
         "category": "Productivity",
         "capabilities": [
@@ -38,7 +38,7 @@
         "privacyPolicyURL": "https://linkdash.dev/legal/privacy-policy",
         "termsOfServiceURL": "https://linkdash.dev/legal/terms-of-service",
         "defaultPrompt": [
-          "Shorten https://example.com/pricing into a short link",
+          "Shorten https://example.com/blog/launch into a short link",
           "How many visits did my links get this week?",
           "Split a link 50/50 between two landing pages"
         ],
