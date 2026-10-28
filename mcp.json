@@ -3,10 +3,7 @@
   "mcpServers": {
     "linkdash": {
       "type": "streamable-http",
-      "url": "https://api.linkdash.dev/mcp",
-      "auth": {
-        "type": "oauth"
-      }
+      "url": "https://api.linkdash.dev/mcp"
     }
   }
 }
