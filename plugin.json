@@ -93,8 +93,8 @@
               "prompt": "Register the domain example-shop.com for me."
             },
             {
-              "description": "Linkdash does not send email or messages.",
-              "prompt": "Email this short link to my team."
+              "description": "Unrelated booking request; Linkdash has nothing to do with it, so no Linkdash tool should be used.",
+              "prompt": "Book a table for two at an Italian restaurant in Rome tonight."
             }
           ]
         },
